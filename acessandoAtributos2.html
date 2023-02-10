@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label>
+        <ul id="compras" destino='escritório' data-urgencia="5" 
+            data-algo="oi">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        const lista = document.querySelector('div ul[destino="escritório"]')
+        // acessando especificamente a ul querida
+
+        console.log('childNodes', lista.childNodes)
+        console.log('destino', lista.getAttribute('destino'))
+        
+        console.log(lista.hasAttribute('destino'))
+
+        lista.setAttribute('destino', 'empresa')
+        // alterando atributo
+        lista.setAttribute('status', 'aberto')
+        // colocando novo
+        lista.removeAttribute('destino')
+        // removendo atributo
+
+
+        // o prefixo 'data-' é tratado de forma diferente
+        // dos demais atributos criados
+
+        console.log(lista.dataset)
+
+        lista.dataset.urgencia = 1
+        // alterando valor do dataset.
+        console.log(lista.getAttribute('data-urgencia'))
+
+
+        //  CUIDADO AO PEGAR ATRIBUTOS NATIVOS
+
+        const label = document.querySelector('label')
+        console.log(label.for)
+        // n vai dar certo
+        console.log(label.htmlFor)
+        // caso especifico q da certo
+        console.log(label.getAttribute('for'))
+        // getAttribute smp funciona
+
+    </script>
+</body>
+
+</html>

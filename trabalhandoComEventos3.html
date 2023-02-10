@@ -1,0 +1,83 @@
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #03</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+        }
+        
+        .esquerda {
+            height: 100vh;
+            width: 50%;
+            background-color: coral;
+        }
+        
+        .direita {
+            height: 100vh;
+            width: 50%;
+            background-color: cornflowerblue;
+        }
+        
+        .item {
+            border: solid 5px black;
+            background-color: darkgrey;
+            color: white;
+            height: 100px;
+            font-size: 40px;
+            margin: 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="esquerda" wm-dropzone>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+    <div class="direita" wm-dropzone></div>
+    <script>
+        const items = document.querySelectorAll('[wm-dropzone] .item')
+        items.forEach((item, index) => {
+            item.draggable = true
+            // true: ele é 'carregável', testa para ver mudança na pag
+            // false: ele NÃO é 'carregável', testa para ver mudança na pag
+            item.id = item.id || `draggable-item${index}`
+            item.ondragstart = e => {
+                e.dataTransfer.setData('item-id', e.target.id)
+            }
+            // se o item tem id, dx como tá. Se ele não tiver id
+            // de um id baseado na posição dele no index da função forEach.
+
+            // no momento em que o usuário começar a arrastar a div
+            // o id vai ter sido setado (ondragstart).
+        })
+
+        const dropzones = document.querySelectorAll('[wm-dropzone]')
+        dropzones.forEach(dropzone => {
+            dropzone.ondragover = e => e.preventDefault()
+            // quando terminar de arrastar o elemento ele preveni um comportamento padrão
+            // (voltar ao lugar de origem) e chama outra função no lugar.
+
+            dropzone.ondrop = function(e) {
+                const id = e.dataTransfer.getData('item-id')
+                const item = document.getElementById(id)
+                e.target.appendChild(item)
+                // quando o elemento for solto (ondrop), o id dele vai mudar
+                // e o e.target (que o elemento no qual a div foi 'soltada') vai receber mais uma
+                // child (nesse caso a div arrastada)
+            }
+        })
+        
+    </script>
+</body>
+
+</html>

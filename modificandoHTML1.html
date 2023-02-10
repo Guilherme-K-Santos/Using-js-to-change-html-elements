@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <script>
+        const body = document.querySelector('body')
+
+        const div1 = document.createElement('div')
+        // criando a div
+        div1.classList.add('destaque')
+        // add classe na div
+        div1.innerHTML = 'primeiro'
+        // innerHTML simbiliza o conteúdo dessa classe. Nesse caso: 'primeiro'
+
+        const div2 = document.createElement('div')
+
+        div2.setAttribute('wm-atributo', 'valor')
+        div2.innerHTML = 'gear second'
+
+        const p = document.createElement('p')
+        p.innerHTML = 'gear third'
+
+        const div3 = document.createElement('div')
+        div3.appendChild(p)
+        // adicionando o p na div3, ele será adicionado na ultima posição (append)
+
+
+        // após tudo isso, a div ainda n foi add no body, por
+        // isso que não foi mostrada
+
+        body.appendChild(div1)
+        body.appendChild(div2)
+        body.appendChild(div3)
+        // add as divs no body (pag html)
+
+        const texto = document.createTextNode('antes')
+        div3.insertBefore(texto, div3.childNodes[0])
+        // uma forma de add em qualquer posição desejafda e não só na ultima.
+
+
+        // criando clone:
+        const div4 = div3.cloneNode(true)
+        // true: vai clonar os filhos tb
+        // false: só clona o desejado especifico
+
+        body.appendChild(div4)
+        body.removeChild(div3)
+        // colocando a div4 e removendo a div3
+    </script>
+</body>
+
+</html>

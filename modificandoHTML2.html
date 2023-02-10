@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <p>Texto Inicial</p>
+    </div>
+    <script>
+        const div = document.querySelector('div')
+        div.innerHTML = 'texto alterado'
+        // innerHTML substitui tudo dentro do elemento pelo que vc passar
+
+        // div.outerHTML = 'Texto alterado 2, a vingança dos textos'
+        // outerHTML substitui TUDO selecionado (nesse caso a div toda) pelo que foi passado
+    
+        div.insertAdjacentHTML('beforebegin', 'texto 3, o lado oculto do texto')
+        // antes de começar (beforebegin) o elemento (div, nesse caso), coloque um determinado conteúdo.
+
+        div.insertAdjacentHTML('afterbegin', '<p>depois do inicio</p>')
+        // assim que começou (afterbegin) o elemento (div), coloque esse conteúdo.
+
+        div.insertAdjacentHTML('beforeend', '<p> antes do fim da div </p>')
+        // antes de acabar (beforeend) o elemento (div), coloque esse conteúdo.
+        
+        div.insertAdjacentHTML('afterend', '<p>texto 4, o cavaleiro</p>')
+        // logo depois de terminar (afterend) o elemento (div), coloque esse conteúdo.
+
+
+        console.log(div.innerHTML)
+        // vai devolver TUDO
+        console.log(div.innerText)
+        // vai devolver só texto
+    </script>
+</body>
+
+</html>

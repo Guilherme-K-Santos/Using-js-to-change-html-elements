@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Classes</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        Classes
+    </div>
+    <script>
+        const classes = document.querySelector('div').classList
+        // a partir do classlist é possível add, remover e outras funções.
+        
+        classes.add('destaque')
+        // vai adicionar essa classe no elemento div
+
+        classes.remove('destaque')
+        // remove essa classe no elemento
+
+        classes.toggle('destaque')
+        // 'se não existe ele add a classe' e 'se existe ele remove a classe.'
+
+        console.log(classes.contains('destaque'))
+        // retorna true se tiver, false se n tiver
+
+        console.log(classes.length)
+        // retorna a qtt de classes de um elemento
+
+        classes.toggle('destaque')
+        // vai remover dessa vez (ele tinha essa classe antes)
+
+        classes.add('desc')
+        classes.add('desc1')
+        classes.add('desc2')
+        console.log(classes.length)
+
+        for(let c of classes) {
+            console.log(c)
+        }
+
+        classes.forEach(c => console.log(c))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <a href='https://www.cod3r.com.br'>Cod3r</a>
+    </div>
+    <div id='primeiro'>
+        <img src='http://files.cod3r.com.br/curso-web/logo-estreita.png' alt='logo'>
+    </div>
+    <script>
+        const img = document.querySelector('img')
+        console.log('getAttribute', img.getAttribute('src'))
+        // acessando o valor do atributo de imagem
+        
+        console.log('src', img.src)
+        // faz a mesma coisa, mas o outro funciona com atributos criados pelo prog
+
+        console.log('["src"]', img['src'])
+        // faz a msm coisa
+
+        console.log('alt', img.alt)
+
+        console.log('Nodetype', img.nodeType)
+        // nodetype tem uma classificação própria pra elementos
+        // nesse caso, vai retornar o tipo Element = 1
+
+        console.log('Nodename', img.nodeName)
+        // acessar o nome do elemento ou atributo que vc está acessando através de nodename
+
+        const src = img.getAttributeNode('src')
+        // vai dar o nó aonde o atributo está
+
+        console.log(src.nodeType)
+        console.log(src.nodeName)
+
+        console.log(src.nodeValue)
+        // esse vai retornar o valor do src
+
+        const link = document.querySelector('a')
+        console.log('href', link.href)
+        // retorna o valor do atributo href
+
+        console.log(link.firstChild.nodeType)
+        // vai apontar para o texto (tipo 3)
+
+        link.firstChild.nodeValue = 'novo texto'
+    </script>
+</body>
+
+</html>

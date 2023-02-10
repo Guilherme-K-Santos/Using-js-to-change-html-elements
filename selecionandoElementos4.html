@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        function log() {
+            console.log(this)
+        }
+
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log()
+        // acessando a div pai de ul
+
+        lista.childNodes.log()
+        // acessando os elementos filhos de ul
+
+        const primeiro = lista.firstChild
+        primeiro.log()
+        // acessando o primeiro elemento dos filhos de ul (nesse caso um espaço vazio
+        // antes de começar os lis)
+
+        primeiro.nextSibling.log()
+        // é o primeiro (espaço vazio).next, ou seja, o primeiro li (pedro).
+
+        const ultimo = lista.lastChild
+        lista.lastChild.log()
+        // é o ultimo elemento da lista ul (uma espaço vazio, já que entre cada li tem um espaço vazio)
+        
+        ultimo.previousSibling.log()
+        // vai pegar o elemento anterior ao ultimo (bia).
+    
+        lista.children.log()
+        // retorna só os li's, semos espaços vazios
+
+        lista.firstElementChild.log()
+        // vai trazer o li e não texto (igual 'lista.firstChild' acima)
+        lista.lastElementChild.log()
+        // vai trazer o li e não texto (igual 'lista.lastChild' acima)
+
+        lista.parentNode.previousElementSibling.log()
+        // vai retornar o irmão anterior do pai de ul (a div com o 'p' = 'inicio')
+
+        lista.parentNode.nextElementSibling.log()
+        // vai retornar o irmão posterior do pai de ul (a div com o 'p' = 'fim')
+
+        document.querySelectorAll('div ul li').log()
+        // outras formas de fazer o acima (talvez mais fáceis) existem.
+
+    </script>
+</body>
+
+</html>
